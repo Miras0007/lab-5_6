@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task Management</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h2>Task List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>User</th>
+        <th>Category</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Priority</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.taskId}"></td>
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.user.username}"></td>
+        <td th:text="${task.category.name}"></td>
+        <td th:text="${task.dueDate}"></td>
+        <td th:text="${task.status}"></td>
+        <td th:text="${task.priority}"></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/admin/tasks/new}">Add New Task</a> |
+<a th:href="@{/admin/users}">View Users</a> |
+<a th:href="@{/admin/categories}">View Categories</a> |
+<a th:href="@{/tasks}">Back to Tasks</a>
+</body>
+</html>
