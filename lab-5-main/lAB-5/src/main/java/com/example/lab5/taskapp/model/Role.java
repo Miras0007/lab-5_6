@@ -2,6 +2,8 @@ package com.example.lab5.taskapp.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "roles")
@@ -16,5 +18,8 @@ public class Role {
     private Long roleId;
 
     @Column(nullable = false, unique = true)
-    private String name;
+    private String roleName;
+
+    @ManyToMany(mappedBy = "roles") // mappedBy указывает на связь в User
+    private Set<User> users = new HashSet<>();
 }
